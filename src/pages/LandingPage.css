@@ -1,0 +1,9 @@
+section{
+    background-image:  url('../../public/hero-section-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover ;
+    background-position: 50%;
+    height: 400px;
+    width: 1300px;
+    margin: 0 auto;
+}
