@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
-    <div className=' bg-headLineColor py-4'>
+    <div className=' bg-headLineColor py-5'>
         <div className="container mx-auto">
             <div className=" flex justify-between mx-20">
                 <div className=" flex justify-center gap-3">
@@ -12,7 +12,7 @@ const Navbar = () => {
                         <img src="../../public/tmdb.svg" className=' w-52' alt="" />
                     </Link>
                     <div className="">
-                        <ul className=' flex  gap-5 font-medium  text-background'>
+                        <ul className=' flex text-lg  gap-5 font-medium  text-background'>
                             <li>Home</li>
                             <Link to={'/movies'}>
                                 <li>Movies</li>

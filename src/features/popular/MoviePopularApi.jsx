@@ -11,8 +11,21 @@ export const MoviePopularApi = createApi({
                 
             }),
             providesTags: ['popular'],
+        }),
+        getTrendingMovies: builder.query({
+            query : () => ({
+                url : `/trending/all/day?api_key=911d7a38189b44a7b26b9ffa83d37d3e`,
+
+            }),
+            providesTags: ['popular']
+        }),
+        getUpcomingMovies: builder.query({
+            query : () => ({
+                url : `/movie/upcoming?api_key=911d7a38189b44a7b26b9ffa83d37d3e&language=en-US&page=1`
+            }),
+            providesTags: ['popular']
         })
     })
 })
 
-export const {useGetPopularMoviesQuery} = MoviePopularApi;
+export const {useGetPopularMoviesQuery,useGetTrendingMoviesQuery,useGetUpcomingMoviesQuery} = MoviePopularApi;
