@@ -1,6 +1,7 @@
 import React from 'react'
 import {AiOutlineSearch} from 'react-icons/ai'
 import { Link } from 'react-router-dom'
+import logo from '../../public/tmdb.svg'
 
 const Navbar = () => {
   return (
@@ -9,7 +10,7 @@ const Navbar = () => {
             <div className=" flex justify-between mx-20">
                 <div className=" flex justify-center gap-3">
                     <Link to={'/'}>
-                        <img src="../../public/tmdb.svg" className=' w-52' alt="" />
+                        <img src={logo} className=' w-52' alt="" />
                     </Link>
                     <div className="">
                         <ul className=' flex text-lg  gap-5 font-medium  text-background'>
