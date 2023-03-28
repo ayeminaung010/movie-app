@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     colors: {
       "background" : '#fffffe',
+      "detailBtn" : '#d1d5db',
       "headLineColor" : '#094067',
       "textColor"  : '#5f6c7b',
       "primaryBtn" : '#3da9fc',

@@ -15,7 +15,6 @@ export const MoviePopularApi = createApi({
         getTrendingMovies: builder.query({
             query : () => ({
                 url : `/trending/all/day?api_key=911d7a38189b44a7b26b9ffa83d37d3e`,
-
             }),
             providesTags: ['popular']
         }),
@@ -24,8 +23,50 @@ export const MoviePopularApi = createApi({
                 url : `/movie/upcoming?api_key=911d7a38189b44a7b26b9ffa83d37d3e&language=en-US&page=1`
             }),
             providesTags: ['popular']
+        }),
+        getMovieDetail : builder.query({
+            query: (id) => ({
+                url : `/movie/${id}?api_key=911d7a38189b44a7b26b9ffa83d37d3e&language=en-US`
+            }),
+            providesTags: ['popular']
+        }),
+        getRecommendations: builder.query({
+            query : (id) => ({
+                url: `/movie/${id}/recommendations?api_key=911d7a38189b44a7b26b9ffa83d37d3e&language=en-US&page=1`
+            }),
+            providesTags: ['popular']
+        }),
+        getVideos : builder.query({
+            query : (id) => ({
+                url : `/movie/${id}/videos?api_key=911d7a38189b44a7b26b9ffa83d37d3e&language=en-US`
+            }),
+            providesTags: ['popular']
+        }),
+        getCasts: builder.query({
+            query: (id) => ({
+                url : `/movie/${id}/credits?api_key=911d7a38189b44a7b26b9ffa83d37d3e&language=en-US`
+            }),
+            providesTags: ['popular']
+        }),
+        getReviews: builder.query({
+            query: (id) => ({
+                url : `/movie/${id}/reviews?api_key=911d7a38189b44a7b26b9ffa83d37d3e&language=en-US&page=1`
+            }),
+            providesTags: ['popular']
+        }),
+        getSimilarMovies : builder.query({
+            query: (id) => ({
+                url : `/movie/${id}/similar?api_key=911d7a38189b44a7b26b9ffa83d37d3e&language=en-US&page=1`
+            }),
+            providesTags: ['popular']
+        }),
+        getSocialIds: builder.query({
+            query: (id) => ({
+                url : `/movie/${id}/external_ids?api_key=911d7a38189b44a7b26b9ffa83d37d3e`
+            }),
+            providesTags: ['popular']
         })
     })
 })
 
-export const {useGetPopularMoviesQuery,useGetTrendingMoviesQuery,useGetUpcomingMoviesQuery} = MoviePopularApi;
+export const {useGetPopularMoviesQuery,useGetTrendingMoviesQuery,useGetUpcomingMoviesQuery,useGetMovieDetailQuery,useGetCastsQuery} = MoviePopularApi;
