@@ -1,16 +1,22 @@
 import moment from 'moment';
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { useGetCastsQuery, useGetMovieDetailQuery } from '../features/popular/MoviePopularApi';
+import { Link, useParams } from 'react-router-dom';
+import { useGetCastsQuery, useGetMovieDetailQuery, useGetReviewsQuery } from '../features/popular/MoviePopularApi';
 import {BsListUl,BsFillBookmarkFill,BsFillPlayFill} from 'react-icons/bs'
 import {AiFillHeart,AiFillStar} from 'react-icons/ai'
+import TopCast from '../components/TopCast';
+import SeeMoreCast from '../components/SeeMoreCast';
+import Reviews from '../components/Reviews';
 
 const DetailMovie = () => {
   const { id } = useParams();
 
   const { data : movieData, isLoading : movieLoading } = useGetMovieDetailQuery(id);
   const {data: castData,isLoading : castLoading} = useGetCastsQuery(id);
-  console.log(castData);
+  const {data: reviewData ,isLoading: reviewLoading} = useGetReviewsQuery(id);
+  const casts = castData?.cast
+  const crews = castData?.crew
+  const reviews  = reviewData?.results
 
   const backgroundStyle = {
     position: 'relative',
@@ -114,8 +120,34 @@ const DetailMovie = () => {
           <div className="">
             <h1 className=' font-semibold text-2xl'>Top Billed Cast</h1>
           </div>
-          <div className="">
-
+          <div className="flex  gap-10 w-[1280px] overflow-scroll overflow-y-hidden  ">
+              {casts?.map( (cast,index) => (
+                  index <= 8 && <TopCast key={cast.id} cast={cast}/> 
+              ))}
+              <SeeMoreCast/>
+          </div>
+          <div className=" mt-10">
+            <Link>
+                <p className=' text-xl font-semibold hover:text-textColor'>Full Cast & Crew</p>
+            </Link>
+          </div>
+          <div className="my-5">
+            <hr className=' w-11/12 text-textColor' />
+          </div>
+          <div className="mb-3 flex gap-5 items-center">
+            <div className="">
+              <h1 className=' font-semibold text-2xl'>Social</h1>
+            </div>
+            <div className="">
+              <p className=' border-b-4  text-xl font-medium'>Reviews {reviews?.length}</p>
+            </div>
+          </div>
+          <div className="mb-5">
+              {
+                reviews?.map((review,index) => (
+                  index <1 && <Reviews key={review.id} review={review}/>
+                ))
+              }
           </div>
         </div>
       </div>

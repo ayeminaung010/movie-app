@@ -8,7 +8,6 @@ const Poster = ({adult,id,backdrop_path,name,first_air_date,title,overview,popul
     
   return (
     <div>
-       
        <div className=" w-44 mt-8 cursor-pointer relative">
             <div className="">
               <Link to={`/movies/detail/${id}`}>

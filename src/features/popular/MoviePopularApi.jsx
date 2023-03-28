@@ -69,4 +69,4 @@ export const MoviePopularApi = createApi({
     })
 })
 
-export const {useGetPopularMoviesQuery,useGetTrendingMoviesQuery,useGetUpcomingMoviesQuery,useGetMovieDetailQuery,useGetCastsQuery} = MoviePopularApi;
+export const {useGetPopularMoviesQuery,useGetTrendingMoviesQuery,useGetUpcomingMoviesQuery,useGetMovieDetailQuery,useGetCastsQuery,useGetReviewsQuery} = MoviePopularApi;
