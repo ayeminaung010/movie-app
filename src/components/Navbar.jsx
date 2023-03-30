@@ -15,7 +15,9 @@ const Navbar = () => {
                     </Link>
                     <div className=" hidden lg:block ">
                         <ul className=' flex text-lg  gap-5 font-medium  text-background'>
-                            <li>Home</li>
+                            <Link to={'/'}>
+                                <li>Home</li>
+                            </Link>
                             <Link to={'/movies'}>
                                 <li>Movies</li>
                             </Link>

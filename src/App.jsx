@@ -4,6 +4,9 @@ import Movie from './components/Movie'
 import Navbar from './components/Navbar'
 import DetailMovie from './pages/DetailMovie'
 import LandingPage from './pages/LandingPage'
+import 'react-responsive-modal/styles.css';
+import 'react-circular-progressbar/dist/styles.css';
+import 'react-tooltip/dist/react-tooltip.css'
 
 const App = () => {
   return (

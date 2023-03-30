@@ -1,5 +1,5 @@
 import moment from 'moment';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useGetCastsQuery, useGetMovieDetailQuery, useGetRecommendationsQuery, useGetReviewsQuery, useGetVideosQuery } from '../features/popular/MoviePopularApi';
 import {BsListUl,BsFillBookmarkFill,BsFillPlayFill} from 'react-icons/bs'
@@ -8,9 +8,17 @@ import TopCast from '../components/TopCast';
 import SeeMoreCast from '../components/SeeMoreCast';
 import Reviews from '../components/Reviews';
 import RecommendMovie from '../components/RecommendMovie';
+import ReactPlayer from 'react-player';
+import Modal from 'react-responsive-modal';
+import ProgressBar from '../components/ProgressBar';
+import { Tooltip as ReactTooltip } from 'react-tooltip'
 
 const DetailMovie = () => {
   const { id } = useParams();
+  const [open, setOpen] = useState(false);
+
+  const onOpenModal = () => setOpen(true);
+  const onCloseModal = () => setOpen(false);
 
   const { data : movieData, isLoading : movieLoading } = useGetMovieDetailQuery(id);
   const {data: castData,isLoading : castLoading} = useGetCastsQuery(id);
@@ -50,6 +58,7 @@ const DetailMovie = () => {
     alignItems: 'center',
   };
 
+  const percentage = movieData?.vote_average * 10;
   const imageStyle = {
     width: 'auto',
     height: '500px',
@@ -99,19 +108,24 @@ const DetailMovie = () => {
               </div>
             </div>
             <div className="flex flex-wrap justify-center lg:justify-start  items-center space-x-5">
+              
               <div className="flex flex-wrap  justify-center lg:justify-start items-center gap-4 mt-5">
-                <button className=' bg-btnBg px-4 py-4 rounded-full text-xl'><BsListUl/></button>
-                <button className=' bg-btnBg px-4 py-4 rounded-full text-xl'><AiFillHeart/></button>
-                <button className=' bg-btnBg px-4 py-4 rounded-full text-xl'><BsFillBookmarkFill/></button>
-                <button className=' bg-btnBg px-4 py-4 rounded-full text-xl'><AiFillStar/></button>
+                <div className=" w-14 hover:scale-125 transition-transform duration-300 ">
+                  <ProgressBar percentage={percentage}/>
+                </div>
+                <button className=' bg-btnBg px-4 py-4 rounded-full text-xl' id='addToList'><BsListUl/></button>
+                <button className=' bg-btnBg px-4 py-4 rounded-full text-xl' id='favourite'><AiFillHeart/></button>
+                <button className=' bg-btnBg px-4 py-4 rounded-full text-xl' id='bookMark'><BsFillBookmarkFill/></button>
+                <button className=' bg-btnBg px-4 py-4 rounded-full text-xl' id='rate'><AiFillStar/></button>
               </div>
               <div className="">
-                <Link to={'https://www.youtube.com/watch?v=' + getVideo?.map(video => video?.key)}>
-                  <div className="flex flex-wrap gap-3 items-center cursor-pointer py-4 px-4 hover:opacity-50  text-xl">
-                    <BsFillPlayFill className=' text-3xl'/>
-                    <p>Play Trailer</p>
-                  </div>
-                </Link>
+                <div onClick={onOpenModal} className="flex flex-wrap gap-3 items-center cursor-pointer py-4 px-4 hover:opacity-50  text-xl">
+                  <BsFillPlayFill className=' text-3xl'/>
+                  <p>Play Trailer</p>
+                </div>
+                <Modal open={open} onClose={onCloseModal} center>
+                  <ReactPlayer  controls={true} url={'https://www.youtube.com/watch?v=' +  getVideo?.map(video => video?.key)} />
+                </Modal>
               </div>
             </div>
             <div className=" mt-5">
@@ -189,6 +203,31 @@ const DetailMovie = () => {
           </section>
         </div>
       </div>
+      {/* tooltips  */}
+      <ReactTooltip
+        anchorId="addToList"
+        place="top"
+        content="Add To List"
+        className=' z-50'
+      />
+      <ReactTooltip
+        anchorId="favourite"
+        place="top"
+        content="Add To Fav"
+        className=' z-50'
+      />
+      <ReactTooltip
+        anchorId="bookMark"
+        place="top"
+        content="Bookmark"
+        className=' z-50'
+      />
+      <ReactTooltip
+        anchorId="rate"
+        place="top"
+        content="Rate it"
+        className=' z-50'
+      />
     </div>
   );
 };
