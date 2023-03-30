@@ -16,6 +16,7 @@ const Filter = ({filter,setFilter,activeGenre,setActiveGenre,popularMovies}) => 
         const filterMovies = popularMovies.filter(movie => movie.genre_ids.includes(activeGenre));
         setFilter(filterMovies);
     },[activeGenre]);
+    
     return (
         <div>
             <motion.div layoutId="underline" className=" overflow-scroll overflow-y-hidden  flex ">

@@ -30,7 +30,7 @@ const DetailMovie = () => {
   const getVideo = allVideos?.filter(video => video.name === "Official Trailer");
 
   const pseudoElementStyle = {
-    content: "''",
+    content: "",
     position: 'absolute',
     top: 0,
     left: 0,
@@ -39,23 +39,22 @@ const DetailMovie = () => {
     backgroundImage: `linear-gradient(#0398D2, #457f1d1d),url('https://image.tmdb.org/t/p/w500${movieData?.backdrop_path}')` ,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-    
+    backgroundPosition: '50%',
     filter: "grayscale(40%)"
   };
 
   const contentStyle = {
     position: 'relative',
     zIndex: 1,
-    padding: '4rem',
     display: 'flex',
     alignItems: 'center',
   };
 
   const imageStyle = {
-    width: '300px',
+    width: 'auto',
     height: '500px',
     borderRadius: '1rem',
-    marginRight: '2rem',
+
   };
   const releaseDate = moment(movieData?.release_date);
   
@@ -64,17 +63,21 @@ const DetailMovie = () => {
     <div className="">
       <div style={backgroundStyle}>
         <div style={pseudoElementStyle}></div>
-        <div style={contentStyle} className='flex justify-center w-full'>
-          <img
-            src={'https://image.tmdb.org/t/p/w500' + movieData?.poster_path}
-            style={imageStyle}
-            alt=""
-          />
-        
+        <div style={contentStyle} className='flex flex-wrap gap-5 justify-center w-full py-10 lg:p-20'>
+          <div className=" r ">
+            <div className="  ">
+              <img
+                src={'https://image.tmdb.org/t/p/w500' + movieData?.poster_path}
+                style={imageStyle}
+                className={'detail-img'}
+                alt=""
+              />
+            </div>
+          </div>
           <div className='w-8/12  text-background  '>
             <div className="">
               <h1 className=' text-5xl font-bold'>{movieData?.original_title + ' ' + '(' + releaseDate.format('Y') + ')'}</h1>
-              <div className=" text-xl font-medium space-x-2">
+              <div className="flex flex-wrap items-center gap-2 mt-4 justify-center lg:mt-0 lg:justify-start  text-xl font-medium space-x-2">
                 <span>{releaseDate.format('MM/D/Y')}</span>
                 {
                   movieData?.production_countries.length === 1 ? (
@@ -95,8 +98,8 @@ const DetailMovie = () => {
                 <span>{Math.floor(movieData?.runtime / 60) + 'h' + ' ' + movieData?.runtime % 60 + 'm'}</span>
               </div>
             </div>
-            <div className="flex items-center space-x-5">
-              <div className="flex flex-wrap gap-4 mt-5">
+            <div className="flex flex-wrap justify-center lg:justify-start  items-center space-x-5">
+              <div className="flex flex-wrap  justify-center lg:justify-start items-center gap-4 mt-5">
                 <button className=' bg-btnBg px-4 py-4 rounded-full text-xl'><BsListUl/></button>
                 <button className=' bg-btnBg px-4 py-4 rounded-full text-xl'><AiFillHeart/></button>
                 <button className=' bg-btnBg px-4 py-4 rounded-full text-xl'><BsFillBookmarkFill/></button>
@@ -122,15 +125,15 @@ const DetailMovie = () => {
             </div>
           </div>
         </div>
-      
+
       </div>
       <div className=" mt-10">
         <div className=" container mx-auto ">
-          <section className=" w-10/12 ">
+          <section className=" lg:w-10/12 ">
             <div className="">
               <h1 className=' font-semibold text-2xl'>Top Billed Cast</h1>
             </div>
-            <div className="flex  gap-10 w-[1280px] overflow-scroll overflow-y-hidden  ">
+            <div className="flex  gap-10 lg:w-[1100px] xl:w-[1280px] overflow-scroll overflow-y-hidden  ">
                 {casts?.map( (cast,index) => (
                     index <= 8 && <TopCast key={cast.id} cast={cast}/> 
                 ))}
@@ -145,7 +148,7 @@ const DetailMovie = () => {
           <div className="my-5">
             <hr className=' w-10/12 text-textColor' />
           </div>
-          <section className='w-10/12 '>
+          <section className='lg:w-10/12 '>
             <div className="mb-3 flex gap-5 items-center">
               <div className="">
                 <h1 className=' font-semibold text-2xl'>Social</h1>
@@ -170,7 +173,7 @@ const DetailMovie = () => {
           <div className="my-5">
             <hr className=' w-11/12 text-textColor' />
           </div>
-          <section className=" w-10/12 mt-5 ">
+          <section className=" lg:w-10/12 mt-5 ">
             <div className="">
               <div className="">
                 <h1 className=' font-semibold text-2xl'>Recommendations</h1>

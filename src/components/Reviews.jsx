@@ -5,7 +5,7 @@ const Reviews = ({review}) => {
     const reviewDate = moment(review?.created_at);
   return (
     <div>
-        <div className=" flex  flex-wrap gap-5 shadow-xl px-10 py-5 rounded-md">
+        <div className=" flex  flex-wrap gap-5 shadow-xl lg:px-10 py-5 rounded-md">
             <div className="">
                 <img src={review?.author_details?.avatar_path.substring(1)} className='rounded-full w-20' alt="" />
             </div>
@@ -17,7 +17,7 @@ const Reviews = ({review}) => {
                 </div>
               </div>
               <div className="">
-                <span>{review?.content}</span>
+                <span>{review?.content.substring(0,125) + '....'}</span>
               </div>
             </div>
         </div>

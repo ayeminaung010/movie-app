@@ -13,8 +13,8 @@ const LandingPage = () => {
               </div>
               <div className=" text-background   mt-28">
                   <div className=" mx-16">
-                      <p className=' text-6xl font-bold'>Welcome .</p>
-                      <p className=' text-4xl font-semibold tracking-wider'>Millions of movies, TV shows and people to discover. Explore now.</p>
+                      <p className='text-4xl lg:text-6xl font-bold'>Welcome .</p>
+                      <p className='text-xl md:text-2xl lg:text-4xl font-semibold tracking-wider'>Millions of movies, TV shows and people to discover. Explore now.</p>
                   </div>
               </div>
               <div className=" flex justify-center mt-10">

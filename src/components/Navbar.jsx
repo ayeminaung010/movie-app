@@ -2,17 +2,18 @@ import React from 'react'
 import {AiOutlineSearch} from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 import logo from '../../public/tmdb.svg'
+import {BiMenuAltLeft} from 'react-icons/bi'
 
 const Navbar = () => {
   return (
     <div className=' bg-headLineColor py-5'>
         <div className="container mx-auto">
-            <div className=" flex justify-between mx-20">
+            <div className=" flex justify-between items-center lg:mx-20">
                 <div className=" flex justify-center gap-3">
                     <Link to={'/'}>
-                        <img src={logo} className=' w-52' alt="" />
+                        <img src={logo} className=' lg:w-52 w-44' alt="" />
                     </Link>
-                    <div className="">
+                    <div className=" hidden lg:block ">
                         <ul className=' flex text-lg  gap-5 font-medium  text-background'>
                             <li>Home</li>
                             <Link to={'/movies'}>
@@ -23,7 +24,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                 </div>
-                <div className="">
+                <div className="hidden lg:block">
                     <div className="">
                         <ul className=' flex  gap-5 font-medium  text-background'>
                             <li  className=' cursor-pointer hover:text-textColor'>
@@ -32,6 +33,11 @@ const Navbar = () => {
                             <li  className=' cursor-pointer hover:text-textColor'>Sign In</li>
                             <li  className=' cursor-pointer hover:text-textColor'>Register</li>
                         </ul>
+                    </div>
+                </div>
+                <div className="hamburger-menu block lg:hidden">
+                    <div className="px-3 py-3 rounded-full  text-background cursor-pointer">
+                        <BiMenuAltLeft className=' text-3xl   '/>
                     </div>
                 </div>
             </div>

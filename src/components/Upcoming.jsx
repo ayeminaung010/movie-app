@@ -9,7 +9,7 @@ const Upcoming = () => {
   return (
     <section>
         <div className=" mt-10">
-            <div className=" text-3xl ml-20  font-semibold">
+            <div className=" text-3xl ml-0 xl:ml-20 font-semibold">
                 <h1>Upcoming Movies</h1>
             </div>
             <div className="flex justify-center   ">
