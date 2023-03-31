@@ -10,9 +10,9 @@ const ProgressBar = ({percentage}) => {
             background
             backgroundPadding={6}
             styles={buildStyles({
-            backgroundColor: "#3e65c7",
+            backgroundColor: "#111827",
             textColor: "#fff",
-            pathColor: "#fff",
+            pathColor: percentage > 70 ? "#22c55e ": "#fbbf24",
             trailColor: "transparent"
         })}
         />

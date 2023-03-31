@@ -6,8 +6,8 @@ export const  PeopleApi = createApi({
     tagTypes: ['people'],
     endpoints: (builder) => ({
         getPopularPeople: builder.query({
-            query: () => ({
-                url: `/person/popular?api_key=911d7a38189b44a7b26b9ffa83d37d3e&language=en-US&page=1`
+            query: (pageCount) => ({
+                url: `/person/popular?api_key=911d7a38189b44a7b26b9ffa83d37d3e&language=en-US&page=${pageCount ? pageCount : 1}`
             }),
             providesTags: ['people']
         }),
@@ -28,8 +28,14 @@ export const  PeopleApi = createApi({
                 url : `/person/${id}/movie_credits?api_key=911d7a38189b44a7b26b9ffa83d37d3e&language=en-US`
             }),
             providesTags: ['people']
+        }),
+        getSocialIds: builder.query({
+            query: (id) => ({
+                url : `/person/${id}/external_ids?api_key=911d7a38189b44a7b26b9ffa83d37d3e&language=en-US`
+            }),
+            providesTags: ['people']
         })
     })
 })
 
-export const{useGetPopularPeopleQuery,useGetPeopleDetailQuery,useGetPeopleImagesQuery,useGetMoviesCreditsQuery} = PeopleApi
+export const{useGetPopularPeopleQuery,useGetPeopleDetailQuery,useGetPeopleImagesQuery,useGetMoviesCreditsQuery,useGetSocialIdsQuery} = PeopleApi

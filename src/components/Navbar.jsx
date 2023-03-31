@@ -22,7 +22,9 @@ const Navbar = () => {
                                 <li>Movies</li>
                             </Link>
                             <li>TV Shows</li>
-                            <li>People</li>
+                            <Link to={'/person'}>
+                                <li>People</li>
+                            </Link>
                         </ul>
                     </div>
                 </div>
