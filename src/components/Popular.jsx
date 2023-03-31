@@ -5,7 +5,7 @@ import Poster from './Poster';
 const Popular = () => {
     const {data,isLoading} = useGetPopularMoviesQuery();
     const popularMovies = data?.results
-    console.log(popularMovies);
+    
   return (
     <section>
         <div className=" mt-10">

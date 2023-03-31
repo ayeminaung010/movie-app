@@ -5,7 +5,6 @@ import Poster from './Poster';
 const Upcoming = () => {
     const {data,isLoading} = useGetUpcomingMoviesQuery();
     const upcomingMovies = data?.results
-    console.log(upcomingMovies);
   return (
     <section>
         <div className=" mt-10">

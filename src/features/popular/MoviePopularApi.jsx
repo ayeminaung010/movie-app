@@ -65,8 +65,14 @@ export const MoviePopularApi = createApi({
                 url : `/movie/${id}/external_ids?api_key=911d7a38189b44a7b26b9ffa83d37d3e`
             }),
             providesTags: ['popular']
+        }),
+        getKeywords: builder.query({
+            query: (id) => ({
+                url: `/movie/${id}/keywords?api_key=911d7a38189b44a7b26b9ffa83d37d3e`
+            }),
+            providesTags:['popular']
         })
     })
 })
 
-export const {useGetPopularMoviesQuery,useGetTrendingMoviesQuery,useGetUpcomingMoviesQuery,useGetMovieDetailQuery,useGetCastsQuery,useGetReviewsQuery,useGetRecommendationsQuery,useGetVideosQuery} = MoviePopularApi;
+export const {useGetPopularMoviesQuery,useGetTrendingMoviesQuery,useGetUpcomingMoviesQuery,useGetMovieDetailQuery,useGetCastsQuery,useGetReviewsQuery,useGetRecommendationsQuery,useGetVideosQuery,useGetSocialIdsQuery,useGetSimilarMoviesQuery,useGetKeywordsQuery} = MoviePopularApi;

@@ -30,6 +30,7 @@ const DetailMovie = () => {
   const reviews  = reviewData?.results
   const recommendMovies = recommendData?.results
   const allVideos = videoTrailers?.results
+  console.log(movieData);
 
   const backgroundStyle = {
     position: 'relative',
@@ -58,7 +59,8 @@ const DetailMovie = () => {
     alignItems: 'center',
   };
 
-  const percentage = movieData?.vote_average * 10;
+  const percentage = parseInt(movieData?.vote_average * 10);
+
   const imageStyle = {
     width: 'auto',
     height: '500px',
@@ -110,8 +112,11 @@ const DetailMovie = () => {
             <div className="flex flex-wrap justify-center lg:justify-start  items-center space-x-5">
               
               <div className="flex flex-wrap  justify-center lg:justify-start items-center gap-4 mt-5">
-                <div className=" w-14 hover:scale-125 transition-transform duration-300 ">
-                  <ProgressBar percentage={percentage}/>
+                <div className="flex flex-wrap gap-3 items-center ">
+                  <div className=" w-14 hover:scale-125 transition-transform duration-300 ">
+                    <ProgressBar percentage={percentage}/>
+                  </div>
+                  <span className=' text-xl font-bold'>User Score</span>
                 </div>
                 <button className=' bg-btnBg px-4 py-4 rounded-full text-xl' id='addToList'><BsListUl/></button>
                 <button className=' bg-btnBg px-4 py-4 rounded-full text-xl' id='favourite'><AiFillHeart/></button>
@@ -179,9 +184,11 @@ const DetailMovie = () => {
                 }
             </div>
             <div className="">
+                {reviews?.length  !== 0 && (
                 <Link  className='hover:text-textColor'>
                   <p className=' font-semibold text-xl'>Read All Reviews</p>
                 </Link>
+                )}
             </div>
           </section>
           <div className="my-5">
